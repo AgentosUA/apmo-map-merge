@@ -68,9 +68,10 @@ const start = async () => {
   const endDate = new Date();
 
   console.log(
-    `${dayjs(endDate).diff(dayjs(startDate), 'minute')} and ${dayjs(
-      endDate
-    ).diff(dayjs(startDate), 'second')} seconds`
+    `Finished in ${dayjs(endDate).diff(
+      dayjs(startDate),
+      'minute'
+    )} minutes and ${dayjs(endDate).diff(dayjs(startDate), 'second')} seconds`
   );
 };
 
