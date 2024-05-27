@@ -1,0 +1,14 @@
+{
+  "name": "apmo-map-merge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AgentosUA/apmo-map-merge.git",
+  "author": "AgentosUA <agentoswork@gmail.com>",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "dayjs": "^1.11.11",
+    "join-images": "^1.1.5",
+    "sharp": "^0.33.4"
+  }
+}
