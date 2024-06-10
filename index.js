@@ -63,7 +63,7 @@ const merge = async (fileName) => {
 const start = async () => {
   const startDate = new Date();
 
-  await merge('napf');
+  await merge('lingor3');
 
   const endDate = new Date();
 
