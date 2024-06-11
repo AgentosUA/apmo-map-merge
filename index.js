@@ -17,10 +17,10 @@ const merge = async (fileName) => {
   const startDate = new Date();
 
   const maxZoom =
-    fs.readdirSync(`${__dirname}/maps/${fileName}/${layers[0]}`).length - 1;
+    fs.readdirSync(`${__dirname}/../maps/${fileName}/${layers[0]}`).length - 1;
 
-  const pathToLayers = `maps/${fileName}`;
-  const pathToMerged = `maps/${fileName}`;
+  const pathToLayers = `../maps/${fileName}`;
+  const pathToMerged = `../maps/${fileName}`;
 
   // if (fs.existsSync(`${__dirname}/${pathToMerged}`)) {
   //   fs.rmdirSync(`${__dirname}/${pathToMerged}`, { recursive: true });
@@ -71,7 +71,7 @@ const merge = async (fileName) => {
 };
 
 const start = async () => {
-  const isExists = fs.existsSync(`${__dirname}/maps`);
+  const isExists = fs.existsSync(`${__dirname}/../maps`);
 
   if (!isExists) {
     console.log('No "maps" folder found in the root directory.');
