@@ -14,18 +14,19 @@ const layers = [
 ];
 
 const merge = async (fileName) => {
+  const startDate = new Date();
+
   const maxZoom =
-    fs.readdirSync(`${__dirname}/maps/original/${fileName}/${layers[0]}`)
-      .length - 1;
+    fs.readdirSync(`${__dirname}/maps/${fileName}/${layers[0]}`).length - 1;
 
-  const pathToLayers = `maps/original/${fileName}`;
-  const pathToMerged = `maps/merged/${fileName}`;
+  const pathToLayers = `maps/${fileName}`;
+  const pathToMerged = `maps/${fileName}`;
 
-  if (fs.existsSync(`${__dirname}/${pathToMerged}`)) {
-    fs.rmdirSync(`${__dirname}/${pathToMerged}`, { recursive: true });
-  }
+  // if (fs.existsSync(`${__dirname}/${pathToMerged}`)) {
+  //   fs.rmdirSync(`${__dirname}/${pathToMerged}`, { recursive: true });
+  // }
 
-  fs.mkdirSync(`${__dirname}/${pathToMerged}`);
+  // fs.mkdirSync(`${__dirname}/${pathToMerged}`);
 
   for (let i = 0; i <= maxZoom; i++) {
     const zoom = i;
@@ -57,22 +58,32 @@ const merge = async (fileName) => {
 
       console.log('Images merged: ', finalFilePath);
     }
+
+    const endDate = new Date();
+
+    console.log(
+      `Finished in ${dayjs(endDate).diff(
+        dayjs(startDate),
+        'minute'
+      )} minutes and ${dayjs(endDate).diff(dayjs(startDate), 'second')} seconds`
+    );
   }
 };
 
 const start = async () => {
-  const startDate = new Date();
+  const isExists = fs.existsSync(`${__dirname}/maps`);
 
-  await merge('lingor3');
+  if (!isExists) {
+    console.log('No "maps" folder found in the root directory.');
 
-  const endDate = new Date();
+    return process.exit(0);
+  }
 
-  console.log(
-    `Finished in ${dayjs(endDate).diff(
-      dayjs(startDate),
-      'minute'
-    )} minutes and ${dayjs(endDate).diff(dayjs(startDate), 'second')} seconds`
-  );
+  const mapNames = ['tem_anizay'];
+
+  for (const name of mapNames) {
+    await merge(name);
+  }
 };
 
 start();
